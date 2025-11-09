@@ -86,7 +86,7 @@ AS SELECT a.id AS cntrb_id,
           WHERE pull_request_message_ref.pull_request_id = pull_requests.pull_request_id AND pull_request_message_ref.msg_id = message.msg_id
            and pull_requests.pr_created_at >= now() - interval '13 months'
         UNION ALL
-         SELECT issues.reporter_id AS id,
+         SELECT message.cntrb_id AS id,
             message.msg_timestamp AS created_at,
             issues.repo_id,
             'issue_comment'::text AS action,
